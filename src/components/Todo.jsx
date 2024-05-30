@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { FaCheckCircle, FaTrash } from 'react-icons/fa';
 
 import './todo.css';
 
@@ -8,10 +9,11 @@ const Todo = ({ todo, deleteTodo, checkedTodo }) => {
       <div className={todo.completed ? 'bg' : 'todo'}>
         <h4 className={todo.completed ? 'done' : 'not-done'}>{todo.text}</h4>
         <div className="btn-container">
-          <button onClick={() => checkedTodo(todo.id)}>
-            {todo.completed ? 'Checked' : 'Check'}
-          </button>
-          <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+          <FaCheckCircle
+            className={todo.completed ? 'check' : 'uncheck'}
+            onClick={() => checkedTodo(todo.id)}
+          />
+          <FaTrash className="delete" onClick={() => deleteTodo(todo.id)} />
         </div>
       </div>
     </li>

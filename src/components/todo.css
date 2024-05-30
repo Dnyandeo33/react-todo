@@ -37,7 +37,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 4rem;
-  background-color: #d86161;
+  background-color: #f3a5a5;
   padding: 1rem;
   border-radius: 0.5rem;
 
@@ -60,20 +60,15 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  cursor: pointer;
 
-  button {
-    padding: 0.5rem 0.8rem;
-    border: none;
-    border-radius: 0.2rem;
-    background-color: cornflowerblue;
-    color: #fff;
+  .check {
+    color: green;
   }
-
-  button:hover {
-    background-color: #333;
+  .uncheck {
+    color: white;
   }
-
-  button.check {
-    background-color: green;
+  .delete {
+    color: #6a0202;
   }
 }
