@@ -1,11 +1,10 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import uuid from 'react-uuid';
 
-import './form.css';
+import './editTodo.css';
 
-const EditTodo = ({ addTodo }) => {
-  const [input, setInput] = useState('');
+const EditTodo = ({ todo, updateTodo }) => {
+  const [input, setInput] = useState(todo.text);
   const [error, setError] = useState(false);
 
   const handleChange = (e) => {
@@ -20,13 +19,7 @@ const EditTodo = ({ addTodo }) => {
       return;
     }
 
-    const todo = {
-      id: uuid(),
-      text: input,
-      completed: false,
-    };
-
-    addTodo(todo);
+    updateTodo(input, todo.id);
     setInput('');
   };
 
@@ -34,13 +27,13 @@ const EditTodo = ({ addTodo }) => {
     <div>
       <form className="form" onSubmit={(e) => handleClick(e)}>
         <input
-          className="input"
+          className="edit-input"
           type="text"
           value={input}
           onChange={(e) => handleChange(e)}
         />
-        <button className="btn" type="submit">
-          add
+        <button className="edit-btn" type="submit">
+          Edit
         </button>
       </form>
       {error && <p style={{ color: 'red' }}>Please enter something...</p>}
@@ -49,7 +42,8 @@ const EditTodo = ({ addTodo }) => {
 };
 
 EditTodo.propTypes = {
-  addTodo: PropTypes.func.isRequired,
+  todo: PropTypes.object.isRequired,
+  updateTodo: PropTypes.func.isRequired,
 };
 
 export default EditTodo;

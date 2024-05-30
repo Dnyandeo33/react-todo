@@ -24,6 +24,7 @@ const Form = ({ addTodo }) => {
       id: uuid(),
       text: input,
       completed: false,
+      isEditing: false,
     };
 
     addTodo(todo);
